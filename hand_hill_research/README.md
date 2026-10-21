@@ -1,0 +1,31 @@
+# Моделирование кисти: исследовательский прототип
+
+Проект выделен из исходного `oop_model.py`. **Модель пока НЕ является полноценной моделью Хилла:** сила мышцы вычисляется как `activation(t) * F_max`; зависимостей сила–длина, сила–скорость, упругости сухожилия и динамики активации пока нет.
+
+## Структура
+
+- `src/hand_biomechanics/domain.py` — суставы, фаланги, мышцы, группы мышц.
+- `src/hand_biomechanics/activation.py` — виды экспериментов и функции возбуждения.
+- `src/hand_biomechanics/model.py` — кисть, моменты сил, ОДУ, численный интегратор.
+- `src/hand_biomechanics/visualization.py` — графики углов и 3D-анимация.
+- `src/hand_biomechanics/examples.py` — прежние интерактивные демонстрации.
+- `src/hand_biomechanics/__main__.py` — CLI, запуск без анимации.
+- `tests/` — минимальные модульные и интеграционные тесты.
+- `docs/RESEARCH_ROADMAP.md` — научные ограничения и план расширения.
+
+## Установка и запуск
+
+```bash
+python -m venv .venv
+# Linux/macOS: source .venv/bin/activate
+# Windows: .venv\Scripts\activate
+python -m pip install -e '.[dev]'
+pytest -q
+python -m hand_biomechanics --scenario fist_clench --duration 6 --output results
+```
+
+В `results/` сохраняются `trajectory.npz` (матрица состояния в оригинальной форме) и `angles.png`. Пример: `python examples/basic_simulation.py`.
+
+## Примечание к результатам
+
+Параметры в исходном прототипе носят демонстрационный характер, **не калиброваны по экспериментам**. Текущая динамика использует скалярные эффективные инерции, а не полную матрицу масс; у суставов отсутствуют ограничения диапазона, а геометрия 3D-представления упрощена. Графики не доказывают биомеханическую валидность.

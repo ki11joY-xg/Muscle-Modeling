@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/hand_biomechanics/__init__.py
+src/hand_biomechanics/__main__.py
+src/hand_biomechanics/activation.py
+src/hand_biomechanics/domain.py
+src/hand_biomechanics/examples.py
+src/hand_biomechanics/model.py
+src/hand_biomechanics/visualization.py
+src/hand_biomechanics_research.egg-info/PKG-INFO
+src/hand_biomechanics_research.egg-info/SOURCES.txt
+src/hand_biomechanics_research.egg-info/dependency_links.txt
+src/hand_biomechanics_research.egg-info/requires.txt
+src/hand_biomechanics_research.egg-info/top_level.txt
+tests/test_model.py
